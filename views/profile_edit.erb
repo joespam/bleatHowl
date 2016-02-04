@@ -1,0 +1,39 @@
+<h1>Edit Profile</h1>
+
+<hr>
+
+<form method="POST" action="/profile_edit">
+	<div class="row">
+		<div = class="col-md-6">  
+			<label for="username">Username</label> 
+			<input class="form-control" type="text" name="username" value='<%= "#{current_user.username}"%>' >
+		</div>
+		<div = class="col-md-6">  
+			<label for="password">Change Password</label> 
+			<input class="form-control" type="text" name="password">
+		</div>
+	</div>
+	<div class="row">
+		<div = class="col-md-4">  
+			<label for="fname">First Name</label> 
+			<input class="form-control" type="text" name="fname" value='<%= "#{current_user.fname}"%>'>
+		</div>
+		<div = class="col-md-4">  
+			<label for="lname">Last Name</label> 
+			<input class="form-control" type="text" name="lname" value='<%= "#{current_user.lname}"%>'>
+		</div>
+		<div = class="col-md-4">  
+			<label for="country">Country</label> 
+			<input class="form-control" type="text" name="country" value='<%= "#{@profile.country}"%>'>
+		</div>
+	</div>
+	<hr>          
+	<input type="Submit">
+</form>
+
+		
+
+
+
+
+

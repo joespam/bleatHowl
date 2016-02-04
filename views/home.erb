@@ -1,0 +1,18 @@
+
+		<div class="row">
+				<p class="titletxt titlesize">BleatHowl</p>
+				<h1 class="titletxt">Two Things To Do At The Moon</h1>
+		</div>
+
+		<div class="row">
+
+			<% @posts.each do |post| %>
+				<hr>
+				<h2 class="headerLink"><a href=<%="/blogpost_show?p=#{post.id}"%>><%="#{post.title}"%> </a> </h2>
+				<p>posted by <a href=<%="/show?u=#{post.user_id}"%>><%="#{post.user.username}"%></a><%= " on #{post.date_posted.strftime("%m/%d/%Y %H:%M")}" %> </p>
+				<p class="blogpost">
+					<%= post.body %>
+				</p>
+			<% end %>
+
+		</div>

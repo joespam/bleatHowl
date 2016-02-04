@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Bootstrap -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> 
+		<link rel="stylesheet" type="text/css" href="./CSS/style.css">
+		<title>
+			BleatHowl - Two things to do at the moon
+		</title>
+	</head>
+	<body>
+		<!-- <nav class="navbar navbar-inverse navbar-height-override navbar-static-top"> -->
+		<nav class="navbar navbar-inverse navbar-bleathowl-custom navbar-fixed-top wolfbg">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+
+					<a class="navbar-brand" href="/"><img src="/images/bleathowlLogo.jpg" width="100" alt="Home"></a>
+
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bleathowl-navbar" aria-controls="bleathowl-navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="navbar-collapse collapse" id="bleathowl-navbar">
+					<ul class="nav navbar-nav">
+						<% if current_user %>
+
+							<li class="active"><a href='<%="/show?u=#{current_user.id}"%>'><%="#{current_user.username}"%></a></li>
+							<li><a href="/profile_edit">Update Profile</a></li>
+							<li><a href="/blogpost_new">Post Something!</a></li>
+						<% end %>
+						<li><a href="/users">All Users<span class="sr-only">(current)</span></a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<% if current_user %>
+							<li><a href="/sign-out">Sign-out</a></li>
+						<% else %>
+							<li><a href="/sign-in">Sign-In</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="/sign-up">Sign-Up</a></li>
+						<% end %>
+
+						</li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+
+		<div class="container-fluid woolbg">
+			<div class="row">
+				<div class="col-md-6">
+
+					<%if @error then %>
+						<div class="alert alert-error"><%=@error%></div>
+					<% end %>
+
+					<div class="flash blogpost">
+						<%= flash[:notice] if flash[:notice] %> 
+						<%= flash[:alert] if flash[:alert] %>
+					</div>
+
+					<%= yield %>
+
+					<hr>			
+					<a class="btn btn-default bottom-margin" href="/">Home</a>
+				</div>
+				<div class="col-md-6">		
+					<div id="mycarousel" class="carousel slide bigLogo" data-ride="carousel">
+					    <div class="carousel-inner">
+					        <div class="item active">
+					        <img src="/images/bleathowlLogo.jpg" alt="" class="img-responsive">
+					           <div class="carousel-caption">
+						           <p>Why Twitter When You Can BleatHowl?</p>
+					           </div>
+					        </div>
+					    </div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>
